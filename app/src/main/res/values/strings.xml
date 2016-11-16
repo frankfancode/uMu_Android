@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">UmU</string>
+
+    <string name="login">登   录</string>
+    <string name="signup">注  册</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="have_not_account">去注册</string>
+
+
+    <string name="username_error">用户名 不能为空</string>
+    <string name="password_error">密码 不能为空</string>
+    <string name="repassword_error">两次输入密码不一致</string>
+    <string name="retry">重试</string>
+
+
+    <string name="tab_chat">消息</string>
+    <string name="tab_contact">联系人</string>
 </resources>

@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4355b7</color>
-    <color name="colorPrimaryDark">#36449e</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="primary_light">#B2EBF2</color>
+    <color name="colorAccent">#009688</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
 
     <color name="white">#FFFFFF</color>
+
+    <!-- 主题色 -->
+    <color name="theme_color">#ff00beaf</color>
+    <color name="theme_color_translucence">#8800beaf</color>
+    <color name="theme_color_clicked">#ff00988c</color>
+    <color name="theme_color_disabled">#ffCCCCCC</color>
+    <color name="theme_activity_bg">#fff8f8f8</color>
+    <color name="bg_bar">#fff7f7f7</color>
+
+    <!-- Button-->
+
+    <color name="big_button_color">#6CC3D3</color>
+
+
+    <!-- Text -->
+    <color name="text_white">#ffffffff</color>
+
+    <!-- Line -->
+    <color name="line_title_border">#66000000</color>
+    <color name="line_black">#ff979797</color>
+    <color name="line_gray">#ffD7D7D7</color>
+    <color name="line_avatar">#d6DADADA</color>
+    <color name="line_home">#ffe4e4e4</color>
 </resources>
