@@ -19,6 +19,7 @@
         <activity android:name=".mvp.home.HomeActivity"/>
         <activity android:name=".mvp.guide.GuideActivity"/>
         <activity android:name=".mvp.Login.LoginActivity"/>
+        <activity android:name=".mvp.signup.SignupActivity"/>
 
     </application>
 

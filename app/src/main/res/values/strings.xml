@@ -5,6 +5,7 @@
     <string name="signup">注  册</string>
     <string name="account">账号</string>
     <string name="password">密码</string>
+    <string name="repassword">重新输入密码</string>
     <string name="have_not_account">去注册</string>
 
 

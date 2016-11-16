@@ -13,31 +13,29 @@
         android:paddingTop="56dp">
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:background="@null"
             android:src="@drawable/logo" />
 
-        <!-- Email Label -->
+        <!--  Name Label -->
         <android.support.design.widget.TextInputLayout
-            style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp">
 
             <EditText
-                android:id="@+id/input_email"
+                android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/account"
-                android:inputType="textEmailAddress" />
+                android:inputType="textCapWords"
+                android:textSize="@dimen/font_size_14" />
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Password Label -->
+        <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,26 +47,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="@dimen/font_size_14" />
         </android.support.design.widget.TextInputLayout>
 
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/reinput_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/repassword"
+                android:inputType="textPassword"
+                android:textSize="@dimen/font_size_14" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_signup"
             style="@style/Button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:background="@color/theme_color"
             android:padding="12dp"
-            android:text="@string/login" />
+            android:text="@string/signup" />
 
         <TextView
-            android:id="@+id/link_signup"
+            android:id="@+id/link_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:text="@string/have_not_account"
+            android:text="Already a member? Login"
             android:textSize="16dip" />
 
     </LinearLayout>
