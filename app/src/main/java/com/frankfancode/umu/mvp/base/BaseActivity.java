@@ -3,13 +3,16 @@ package com.frankfancode.umu.mvp.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.frankfancode.umu.R;
-import com.frankfancode.umu.widget.BaseLayout;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -18,22 +21,27 @@ import butterknife.Unbinder;
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
+    @BindView(R.id.appbar)
+    AppBarLayout appBar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private Unbinder unbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getContentView() >0) {
-            BaseLayout baseLayout = new BaseLayout(this);
-            ViewGroup contentLayout = (ViewGroup) baseLayout.findViewById(R.id.base_content);
+        if (getContentView() > 0) {
+            setContentView(R.layout.layout_base);
+            ViewGroup contentLayout = (ViewGroup) findViewById(R.id.base_content);
             LayoutInflater.from(this).inflate(getContentView(), contentLayout, true);
-            setContentView(baseLayout);
-            getContext();
+            unbinder = ButterKnife.bind(this);
+            setSupportActionBar(toolbar);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         } else {
 
         }
-        unbinder = ButterKnife.bind(this);
+
 
     }
 
@@ -43,6 +51,16 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         if (unbinder != null) {
             unbinder.unbind();
         }
+    }
+
+    protected void hideTitle() {
+        appBar.setVisibility(View.GONE);
+    }
+
+    protected void setTitle(String s) {
+        appBar.setVisibility(View.VISIBLE);
+        toolbar.setTitle(s);
+
     }
 
     protected abstract int getContentView();
