@@ -10,11 +10,7 @@ public class ApiException  extends RuntimeException {
     public static final int WRONG_PASSWORD = 101;
 
     public ApiException(int resultCode,String resultMessage) {
-        this(getApiExceptionMessage(resultCode));
-        if (resultMessage!=null&&resultMessage.length()==0){
-
-        }
-
+        this(getApiExceptionMessage(resultCode,resultMessage));
     }
 
     public ApiException(String detailMessage) {
@@ -27,9 +23,9 @@ public class ApiException  extends RuntimeException {
      * @param code
      * @return
      */
-    private static String getApiExceptionMessage(int code){
-        String message = "";
-        switch (code) {
+    private static String getApiExceptionMessage(int code,String message){
+
+        /*switch (code) {
             case USER_NOT_EXIST:
                 message = "该用户不存在";
                 break;
@@ -39,6 +35,9 @@ public class ApiException  extends RuntimeException {
             default:
                 message = "未知错误";
 
+        }*/
+        if (message==null||message.length()==0){
+            message = "未知错误";
         }
         return message;
     }

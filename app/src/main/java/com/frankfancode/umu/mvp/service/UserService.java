@@ -11,7 +11,7 @@ import rx.Observable;
  * Created by FrankFan on 2016/11/17.
  */
 
-public interface UserService extends BaseService {
+public interface UserService {
     @FormUrlEncoded
     @POST("/user/signup")
     Observable<UserEntity> signup(@Field("name") String name, @Field("passwordMd5") String passwordMd5);

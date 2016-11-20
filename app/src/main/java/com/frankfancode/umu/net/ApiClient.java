@@ -67,7 +67,7 @@ public class ApiClient {
 
     public <T> T getService(Class<T> service) {
         if (!mServiceMap.contains(service)) {
-            mServiceMap.put(service, mRetrofit.create(UserService.class));
+            //mServiceMap.put(service, mRetrofit.create(UserService.class));
         }
         return (T) mServiceMap.get(service);
     }

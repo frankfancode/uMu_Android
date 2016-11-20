@@ -42,13 +42,12 @@ public class ProgressSubscriber<T>  extends Subscriber<T> implements ProgressCan
     @Override
     public void onCompleted() {
         dismissProgressDialog();
-        Toast.makeText(context, "Get Top Movie Completed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onError(Throwable e) {
         dismissProgressDialog();
-        Toast.makeText(context, "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,  e.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

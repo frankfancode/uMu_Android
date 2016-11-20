@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.frankfancode.umu.R;
 import com.frankfancode.umu.mvp.base.BasePresenter;
 import com.frankfancode.umu.mvp.entity.MovieEntity;
+import com.frankfancode.umu.mvp.entity.UserEntity;
 import com.frankfancode.umu.mvp.model.UserModel;
 import com.frankfancode.umu.net.HttpMethods;
 import com.frankfancode.umu.net.ProgressSubscriber;
@@ -25,6 +26,8 @@ public class SignupPresenter extends BasePresenter implements SignupContract.Pre
     private SignupContract.View mView;
 
     private UserModel userModel;
+    private SubscriberOnNextListener getTopMovieOnNext;
+    private SubscriberOnNextListener signupOnNext;
 
     @Override
     public void attachView(@NonNull SignupContract.View view) {
@@ -35,9 +38,9 @@ public class SignupPresenter extends BasePresenter implements SignupContract.Pre
 
     @Override
     public void signup(String name, String password, String rePassword) {
-        getMovie();
-        /*if (validate(name, password, rePassword)) {
-            userModel.signup(name, password, new Callback<UserEntity>() {
+        //getMovie();
+        if (validate(name, password, rePassword)) {
+           /* userModel.signup(name, password, new Callback<UserEntity>() {
                 @Override
                 public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                     UserEntity user = response.body();
@@ -53,15 +56,22 @@ public class SignupPresenter extends BasePresenter implements SignupContract.Pre
                 public void onFailure(Call<UserEntity> call, Throwable t) {
                     ToastManager.INSTANCE.showToast(t.getMessage());
                 }
-            });
+            });*/
+
+            signupOnNext = new SubscriberOnNextListener<UserEntity>() {
+
+                @Override
+                public void onNext(UserEntity userEntity) {
+                    ToastManager.INSTANCE.showToast(userEntity.name);
+                }
+            };
+
+            userModel.signup(new ProgressSubscriber<UserEntity>(signupOnNext, view().getContext()), name, password);
         }
 
-*/
     }
 
-    private SubscriberOnNextListener getTopMovieOnNext;
-
-    private void getMovie(){
+    private void getMovie() {
         Subscriber subscriber = new Subscriber<MovieEntity>() {
             @Override
             public void onCompleted() {
@@ -87,8 +97,7 @@ public class SignupPresenter extends BasePresenter implements SignupContract.Pre
         };
 
 
-
-        HttpMethods.getInstance().getTopMovie(new ProgressSubscriber<MovieEntity>(getTopMovieOnNext,view().getContext()), 0, 10);
+        HttpMethods.getInstance().getTopMovie(new ProgressSubscriber<MovieEntity>(getTopMovieOnNext, view().getContext()), 0, 10);
     }
 
     private boolean validate(String name, String password, String rePassword) {
