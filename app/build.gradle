@@ -18,7 +18,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    productFlavors {
+
+        flavorDimensions "enviroment", "channel"
+
+        Dev {
+            dimension "enviroment"
+            applicationId = ANDROID_BUILD_DEV_APP_ID
+            manifestPlaceholders = [APP_NAME: 'UmuDemo']
+        }
+
+        Demo {
+            dimension "enviroment"
+            applicationId = ANDROID_BUILD_DEMO_APP_ID
+            manifestPlaceholders = [APP_NAME: 'UmuDev']
+        }
+
+        Online {
+            dimension "enviroment"
+            applicationId = ANDROID_BUILD_APP_ID
+            manifestPlaceholders = [APP_NAME: 'Umu']
+        }
+
+        官网 {
+            dimension "channel"
+            manifestPlaceholders = [CHANNEL_NAME: 'portal']
+        }
+    }
 }
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -27,10 +57,16 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
-    // https://mvnrepository.com/artifact/com.google.code.gson/gson
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
     testCompile 'junit:junit:4.12'
 }

@@ -1,5 +1,6 @@
 package com.frankfancode.umu.utils;
 
+import com.frankfancode.umu.mvp.entity.UserEntity;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
@@ -72,4 +73,9 @@ public class CacheUtils {
             return null;
         }
     }
+
+    public static void saveUser(UserEntity user) {
+        setBean(SP_KEY_CURRENT_USER, user);
+    }
+
 }

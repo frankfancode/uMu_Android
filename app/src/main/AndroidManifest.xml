@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frankfancode.umu">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".app.UmuApp"
         android:allowBackup="true"
@@ -16,10 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.home.HomeActivity"/>
-        <activity android:name=".mvp.guide.GuideActivity"/>
-        <activity android:name=".mvp.Login.LoginActivity"/>
-        <activity android:name=".mvp.signup.SignupActivity"/>
+        <activity android:name=".mvp.home.HomeActivity" />
+        <activity android:name=".mvp.guide.GuideActivity" />
+        <activity android:name=".mvp.Login.LoginActivity" />
+        <activity android:name=".mvp.signup.SignupActivity" />
 
     </application>
 

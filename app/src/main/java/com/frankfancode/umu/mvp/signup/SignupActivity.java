@@ -46,6 +46,7 @@ public class SignupActivity extends BaseActivity implements SignupContract.View 
         super.onCreate(savedInstanceState);
         super.hideTitle();
         mPresenter=new SignupPresenter();
+        mPresenter.attachView(this);
     }
 
     @OnClick({R.id.btn_signup, R.id.link_login})
