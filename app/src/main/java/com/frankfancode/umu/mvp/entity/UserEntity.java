@@ -7,5 +7,6 @@ package com.frankfancode.umu.mvp.entity;
 public class UserEntity extends BaseEntity {
     public String id;
     public String name;
+
     public String passwordMd5;
 }

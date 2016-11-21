@@ -1,5 +1,6 @@
 package com.frankfancode.umu.mvp.service;
 
+import com.frankfancode.umu.mvp.entity.AuthEntity;
 import com.frankfancode.umu.mvp.entity.UserEntity;
 
 import retrofit2.http.Field;
@@ -14,6 +15,9 @@ import rx.Observable;
 public interface UserService {
     @FormUrlEncoded
     @POST("/user/signup")
-    Observable<UserEntity> signup(@Field("name") String name, @Field("passwordMd5") String passwordMd5);
+    Observable<UserEntity> signup(@Field("name") String name, @Field("encryptPassword") String passwordMd5);
 
+    @FormUrlEncoded
+    @POST("/user/login")
+    Observable<AuthEntity> login(@Field("name") String name, @Field("encryptPassword") String passwordMd5);
 }

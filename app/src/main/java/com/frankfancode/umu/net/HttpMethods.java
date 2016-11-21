@@ -1,6 +1,7 @@
 package com.frankfancode.umu.net;
 
 import com.frankfancode.umu.app.UmuConfig;
+import com.frankfancode.umu.mvp.entity.AuthEntity;
 import com.frankfancode.umu.mvp.entity.MovieEntity;
 import com.frankfancode.umu.mvp.entity.UserEntity;
 import com.frankfancode.umu.mvp.service.MovieService;
@@ -70,8 +71,16 @@ public class HttpMethods {
     }
 
 
-    public void singupUser(Subscriber<UserEntity> subscriber, String username, String passwordMd5) {
-        userService.signup(username, passwordMd5).subscribeOn(Schedulers.io())
+    public void singupUser(Subscriber<UserEntity> subscriber, String username, String encryptPassword) {
+        userService.signup(username, encryptPassword).subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+    }
+
+    public void login(Subscriber<AuthEntity> subscriber, String username, String encryptPassword) {
+        userService.login(username, encryptPassword).subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

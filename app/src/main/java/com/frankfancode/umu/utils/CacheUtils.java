@@ -1,5 +1,6 @@
 package com.frankfancode.umu.utils;
 
+import com.frankfancode.umu.mvp.entity.AuthEntity;
 import com.frankfancode.umu.mvp.entity.UserEntity;
 import com.google.gson.Gson;
 
@@ -13,6 +14,7 @@ public class CacheUtils {
     public static final String SP_KEY_LOGIN = "SP_KEY_LOGIN";// 是否登录
     private static final String SP_KEY_LAST_VERSION = "SP_KEY_APP_VERSION"; // 指导页版本
     private static final String SP_KEY_CURRENT_USER = "SP_KEY_CURRENT_USER"; //
+    private static final String SP_KEY_CACHE_USER_AUTH = "SP_KEY_CACHE_USER_AUTH";// 用户Auth
 
     /**
      * 存储当前 APP 版本号
@@ -76,6 +78,10 @@ public class CacheUtils {
 
     public static void saveUser(UserEntity user) {
         setBean(SP_KEY_CURRENT_USER, user);
+    }
+
+    public static void saveAuth(AuthEntity auth) {
+        setBean(SP_KEY_CACHE_USER_AUTH , auth);
     }
 
 }

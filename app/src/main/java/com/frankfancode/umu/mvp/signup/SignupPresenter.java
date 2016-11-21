@@ -12,6 +12,7 @@ import com.frankfancode.umu.net.HttpMethods;
 import com.frankfancode.umu.net.ProgressSubscriber;
 import com.frankfancode.umu.net.SubscriberOnNextListener;
 import com.frankfancode.umu.utils.ResourceUtil;
+import com.frankfancode.umu.utils.SecureUtil;
 import com.frankfancode.umu.utils.StringUtil;
 import com.frankfancode.umu.utils.ToastManager;
 
@@ -65,8 +66,10 @@ public class SignupPresenter extends BasePresenter implements SignupContract.Pre
                     ToastManager.INSTANCE.showToast(userEntity.name);
                 }
             };
+            String encryptPassword= SecureUtil.MD5(password);
 
-            userModel.signup(new ProgressSubscriber<UserEntity>(signupOnNext, view().getContext()), name, password);
+
+            userModel.signup(new ProgressSubscriber<UserEntity>(signupOnNext, view().getContext()), name, encryptPassword);
         }
 
     }

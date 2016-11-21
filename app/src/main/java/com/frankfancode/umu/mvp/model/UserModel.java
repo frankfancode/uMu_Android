@@ -1,6 +1,7 @@
 package com.frankfancode.umu.mvp.model;
 
 
+import com.frankfancode.umu.mvp.entity.AuthEntity;
 import com.frankfancode.umu.mvp.entity.UserEntity;
 import com.frankfancode.umu.net.HttpMethods;
 import com.frankfancode.umu.utils.CacheUtils;
@@ -20,7 +21,16 @@ public class UserModel {
         CacheUtils.saveUser(user);
     }
 
-    public void signup(Subscriber subscriber,String name, String password) {
-        HttpMethods.getInstance().singupUser(subscriber,name,password);
+    public void saveAuth(AuthEntity authEntity) {
+        CacheUtils.saveAuth(authEntity);
     }
+
+    public void signup(Subscriber subscriber,String name, String encryptPassword) {
+        HttpMethods.getInstance().singupUser(subscriber,name,encryptPassword);
+    }
+
+    public void login(Subscriber subscriber, String name, String encryptPassword) {
+        HttpMethods.getInstance().login(subscriber,name,encryptPassword);
+    }
+
 }
