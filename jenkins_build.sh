@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
 build_number=$1
 
 if [ -z $build_number ]; then
@@ -10,7 +11,6 @@ build_type=$2
 if [ -z $build_type ]; then
 	build_type="Test"
 fi
-
 
 root_path="`dirname $0`"
 root_path_prefix=${root_path:0:1}
