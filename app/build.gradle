@@ -26,6 +26,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        qa.initWith(release)
+        qa {
+            versionNameSuffix ".${BUILD_NUMBER}"
+        }
     }
 
 
@@ -36,13 +41,13 @@ android {
         Dev {
             dimension "enviroment"
             applicationId = ANDROID_BUILD_DEV_APP_ID
-            manifestPlaceholders = [APP_NAME: 'UmuDemo']
+            manifestPlaceholders = [APP_NAME: 'UmuDev']
         }
 
         Demo {
             dimension "enviroment"
             applicationId = ANDROID_BUILD_DEMO_APP_ID
-            manifestPlaceholders = [APP_NAME: 'UmuDev']
+            manifestPlaceholders = [APP_NAME: 'UmuDemo']
         }
 
         Online {
