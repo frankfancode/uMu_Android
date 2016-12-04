@@ -13,19 +13,21 @@ if [ -z $build_type ]; then
 fi
 
 root_path="`dirname $0`"
-root_path_prefix=${root_path:0:1}
-if [[ "$root_path_prefix" != "/" ]]; then
+root_path_prefix=${root_path}
+if [ "$root_path_prefix" != "/" ]; then
 	root_path="`pwd`/${root_path}"
 fi
-
-if [[ ! -z "$build_number" ]]  && [[ ! -z "$root_path" ]]; then
+root_path="`pwd`"
+echo ${root_path}
+if [ ! -z "$build_number" ]  && [ ! -z "$root_path" ]; then
 		rm -rf ${root_path}/output/Build_${build_number}
 fi
 
 mkdir -p ${root_path}/output/Build_${build_number}
 cp ${root_path}/comment.txt ${root_path}/output/Build_${build_number}/comment.txt
 
-if [[ "$build_type" = "Test" ]]; then
+if [ "$build_type" = "Test" ]; then
+	echo ${root_path}
 	${root_path}/gradlew --no-daemon clean assembleDemo官网Qa -PBUILD_NUMBER=${build_number} || exit -1
 	${root_path}/gradlew --no-daemon clean assembleOnline官网Qa -PBUILD_NUMBER=${build_number} || exit -1
 else
